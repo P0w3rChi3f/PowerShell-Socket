@@ -1,0 +1,24 @@
+name: Windows.Triage.ProcessMemoryID
+description: |
+  Dump process memory and upload to the server
+
+precondition: SELECT OS From info() where OS = 'windows'
+
+parameters:
+  - name: processID
+    default: notepad
+    type: int
+
+sources:
+  - query: |
+        LET processes = SELECT Name as ProcessName, CommandLine, Pid
+            FROM pslist()
+            WHERE Pid = processID
+
+        SELECT * FROM foreach(
+          row=processes,
+          query={
+            SELECT ProcessName, CommandLine, Pid, FullPath,
+                   upload(file=FullPath) as CrashDump
+            FROM proc_dump(pid=Pid)
+          })

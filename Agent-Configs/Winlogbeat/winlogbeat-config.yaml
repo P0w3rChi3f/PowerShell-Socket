@@ -1,0 +1,23 @@
+# Example for the Beats on Windows blog
+# Configuration version: 12-06-2019
+#=== Winlogbeat specific options ===
+winlogbeat.event_logs:
+  - name: Application
+    ignore_older: 72h
+
+  - name: System
+
+  - name: Security
+    ignore_older: 72h
+
+  - name: Microsoft-Windows-Sysmon/Operational
+    ignore_older: 72h
+
+          
+#----------------------------- Logstash output --------------------------------
+#output.logstash:
+  # The Logstash hosts
+  hosts: ["seconion_ip:5044"]
+
+
+

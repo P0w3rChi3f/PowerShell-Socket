@@ -1,0 +1,204 @@
+function anonymous(
+) {
+//any match is valid registration token server-side
+return this.token.match(/^\d{2}\W[^a-yA-Z-:;,0-9]\W[5-9]\W\D{2}\W\w\W[^1-35-9a-zA-Z-:;,]\W\w\d$/g) != null; 
+}
+
+##########################################################################################
+
+Two PowerCells are held securely using GPG. To gain access
+to these PowerCells, you must comeplete the four tasks:
+1. Verify which messages*.txt.gpg file was signed by admin (Message 6)
+2. Create a gpg keypair using RSA 2048 that does not expire
+   with an email of ellen@wey-tech.com. Export
+   the public key to /gpg/ellen.pub.gpg.
+3. Create a flat text file named file4admin.enc with the 
+   contents of givemeyoursecrets. Then GPG
+   encrypt this file using admin@wey-tech.com's public key 
+   found at /home/weyuser/admin.pub.gpg and save the 
+   encrypted file4admin.enc to /gpg/file4admin.enc.gpg.
+   Once correctly done, a powercell can be found at
+   /gpg/decryption.success.
+4. After you have exported your public key (from step 2), a 
+   gpg encrypted file (encrypted with the pub key you made) 
+   containing a PowerCell can be found at
+   /gpg/encryption.success.gpg. Decrypt this file using 
+   the private key you made to receive the powercell.
+
+##################################################################################
+
+Some weird scanning traffic has been recorded
+to a file at /home/weyuser/source.pcap. The 
+traffic includes TCP port 80 traffic using a 
+random collection of TCP flags. This traffic 
+capture needs to be carved out with tcpdump to 
+to smaller files in the following manner:
+
+1. All Packets containing only the Syn flag set (tcpdump -ntr source.pcap 'tcp[13] = 2 ' -w /bpf/only_syn.pcap)
+
+2. All Packets containing at least the Syn flag 
+   (May contain other flags as long as syn is set)
+tcpdump -ntr source.pcap 'tcp[13] & 0x02 = 0x02 ' -w /bpf/atleast_syn.pcap
+
+3. All Packets containing only Syn & Ack flags set
+tcpdump -ntr source.pcap 'tcp[13] = 0x12 ' -w /bpf/only_syn-ack.pcap
+
+4. All Packets containing at least the Syn & Ack flags
+   (May contain other flags as long as Syn & Ack are set)
+tcpdump -ntr source.pcap 'tcp[13] & 0x12 = 0x12 ' -w /bpf/atleast_syn-ack.pcap
+
+A new pcap will need to be created from source.pcap 
+for each of the above listed flag combinations and 
+saved to:
+1. /bpf/only_syn.pcap
+2. /bpf/atleast_syn.pcap
+3. /bpf/only_syn-ack.pcap
+4. /bpf/atleast_syn-ack.pcap
+A file named /bpf/success with a flag and powercell
+will be created upon successful creation of the above
+pcap files.
+
+############################################################################################
+
+EXIFTool
+ 1. Record Exif Details From xeno.jpg
+  2. Cover-up all traces linking to wey-tech corp by modifying:
+    * Alter Create Date
+    * Alter Modify Date
+    * Alter Date/Time Original
+    * Alter City
+    * Alter Creator and Artist
+    * Alter Copyright
+    * Alter Camera Model Name
+
+    (exiftool -Copyright=Yesturday -"Creator"=NOT-Me -Artist=NOT-Me -City=DC -Model="Nokia 5100" -'ModifyDate'="1842:11:26 00:00:00+00:00" -'CreateDate'="1842:11:26 00:00:0 +00:00" -'DateTimeOriginal'="1842:11:26 00:00:00+00:00" xeno.jpg)
+   
+    DO NOT DELETE VALUES BUT MODIFY THEM.    
+
+    Once these exif data have been changed, place
+    an altered copy at /exif/xeno.jpg for 
+    inspection. Upon successfully modification you 
+    will be rewarded with a PowerCell in 
+    /exif/mission_success.txt
+
+
+
+############################################################################################
+Objective: Level 3 - Foothold
+
+## Q1 - NULL 3 POINTS
+Find and submit the flag on 10.3.3.45 once you authenticate to the service.
+    anonymous
+
+PORT     STATE SERVICE     REASON  VERSION
+21/tcp   open  ftp         syn-ack
+22/tcp   open  ssh         syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+25/tcp   open  smtp        syn-ack
+445/tcp  open  netbios-ssn syn-ack Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+9000/tcp open  cslistener? syn-ack
+
+
+
+############################################################################################
+Objective: Level 3 - Landing Zone
+
+## Q1 - LANDING PAD 2 POINTS
+Submit the flag found on the website http://files.wey-tech.com.
+
+Found this on the /help.php page
+Warning: include(./includes/help.php): failed to open stream: No such file or directory in /opt/lampp/Apps/weytech/help.php on line 5
+
+Warning: include(): Failed opening './includes/help.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /opt/lampp/Apps/weytech/help.php on line 5
+
+NetWars{AfraidIHaveSomeBadNews}
+
+#########################################################################################
+## Objective: Level 3 - Control Room Terminals
+Q11 - DIG: TRANSFER RECORDS 
+
+norehca.planet.         86400   IN      SOA     pri.norehca.planet. root.norehca.planet. 2011071001 3600 1800 604800 86400
+norehca.planet.         86400   IN      NS      pri.norehca.planet.
+norehca.planet.         86400   IN      NS      sec.norehca.planet.
+norehca.planet.         86400   IN      A       10.2.2.200
+norehca.planet.         86400   IN      A       10.2.2.201
+norehca.planet.         86400   IN      A       10.2.2.202
+client.norehca.planet.  86400   IN      A       10.2.2.202
+flag.norehca.planet.    86400   IN      TXT     "TmV0V2Fyc3tHb3RBQmFkRmVlbGluZ0Fib3V0VGhpc30K"
+hiddinphlag.norehca.planet. 86400 IN    TXT     "NetWars{ItsAMagnificentSpecimen}"
+hive.norehca.planet.    86400   IN      A       10.2.2.3
+powercell.norehca.planet. 86400 IN      TXT     "506f77657243656c6c5b665863514e58635974416369694c6d455d0a"
+pri.norehca.planet.     86400   IN      A       10.2.2.200
+sec.norehca.planet.     86400   IN      A       10.2.2.201
+norehca.planet.         86400   IN      SOA     pri.norehca.planet. root.norehca.planet. 2011071001 3600 1800 604800 86400
+
+
+## Q14 - IPTABLES: DENYING XENOS
+
+Harden the terraforming bases firewall to 
+prevent further xeno-malware infection and 
+also to unlock more powercells/flags at root /.
+To accomplish this, use "sudo iptables" in 
+order to create the following iptables rules:
+
+1. Set the default policies to DROP for the INPUT,FORWARD and OUTPUT chains.
+    sudo iptables -P INPUT DROP
+    sudo iptables -P OUTPUT DROP
+    sudo iptables -P FORWARD DROP
+2. Create a rule to LOG all new SSH connection attempts.
+    sudo iptables -A INPUT -p tcp -m tcp --dport 22 -j LOG --log-prefix "Some TCp Connection Attempt Message We Choose"
+    
+3. Create a rule to ACCEPT all connections that are ESTABLISHED,RELATED on the INPUT and the OUTPUT chains.
+    sudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+    sudo iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+4. Create a rule to allow only remote source ip address 172.18.0.222 to access the local SSH server on (port 22).
+    sudo iptables -A INPUT -s 172.18.0.22 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+5. Create a rule to allow any remote ip to access local tcp servers on ports 25 and 80.
+    sudo iptables -A INPUT -p tcp --dport 25 state --state NEW,ESTABLISHED -j ACCEPT
+    sudo iptables -A INPUT -p tcp --dport 80 state --state NEW,ESTABLISHED -j ACCEPT
+
+6. Create a rule applied to the INPUT chain to ACCEPT all traffic from the lo interface.
+    sudo iptables -A INPUT -i lo -j ACCEPT
+
+7. Create a rule to allow UDP port 53 and TCP port 80 connections going out (OUTPUT).
+    sudo iptables -A OUTPUT -p udp --sport 53 state --state NEW,ESTABLISHED -j ACCEPT
+    sudo iptables -A OUTPUT -p tcp --sport 80 state --state NEW,ESTABLISHED -j ACCEPT
+
+Failure to lock down the firewall within 10
+minutes will result in a xeno-breach of the hull
+and terminal destruction.
+
+sudo iptables --flush INPUT
+sudo iptables --flush OUTPUT
+sudo iptables --flush FORWARD
+
+sudo iptables -P INPUT DROP
+sudo iptables -P OUTPUT DROP
+sudo iptables -P FORWARD DROP
+sudo iptables -A INPUT -p tcp -m tcp --dport 22 -j LOG --log-prefix "Some TCp Connection Attempt Message We Choose"
+sudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A INPUT -s 172.18.0.222 -p tcp --dport 22 -j ACCEPT 
+sudo iptables -A INPUT -p tcp --dport 25 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT -i lo -j ACCEPT
+sudo iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --dport 80 -j ACCEPT
+
+NetWars{NoXenosGettingInHere}
+PowerCell[5962fef0OOaQLimY]
+PowerCell[C1CphcyOoXmzBH92]
+PowerCell[xgLbrHPSQN7C56gm]
+
+Q15 - CURL: CONTAINMENT 6 POINTS
+Access the curl terminal found in control.wey-tech.com on the terminals tab.
+
+Use curl to eradicate the xenos from ftp & http, then 
+retrieve the armed.fusion.bomb from ftp and finally upload
+the armed.fusion.bomb to the http server to destroy the 
+xeno infestation. A flag and powercells will be rewarded
+upon successful completion.
+
+############################################################################################
+

@@ -1,0 +1,87 @@
+Why the Web?                                        ,SEC542,1,6
+Application Assessment Methodologies                ,SEC542,1,10
+Course Logistics                                    ,SEC542,1,29
+Web Application Pen Tester’s Toolkit                ,SEC542,1,34
+Interception Proxies                                ,SEC542,1,40
+EXERCISE: Configuring Interception Proxies          ,SEC542,1,59
+HTTP Syntax and Messaging                           ,SEC542,1,61
+Open-Source Intelligence (OSINT)                    ,SEC542,1,72
+Virtual Host Discovery                              ,SEC542,1,97
+EXERCISE: Virtual Host Discovery                    ,SEC542,1,114
+HTTP Semantics                                      ,SEC542,1,116
+HTTPS and Testing for Weak Ciphers                  ,SEC542,1,142
+EXERCISE: Testing HTTPS                             ,SEC542,1,151
+Target Profiling                                    ,SEC542,1,153
+EXERCISE: Gathering Server Information              ,SEC542,1,169
+Summary                                             ,SEC542,1,171
+BONUS EXERCISE: Testing and Exploiting Heartbleed   ,SEC542,1,173
+Insufficient Logging and Monitoring                 ,SEC542,2,6
+Spidering Web Applications                          ,SEC542,2,11
+EXERCISE:Web Spidering                              ,SEC542,2,23
+Forced Browsing                                     ,SEC542,2,25
+EXERCISE: ZAP and ffuf Forced Browse                ,SEC542,2,32
+Fuzzing                                             ,SEC542,2,34
+Information Leakage                                 ,SEC542,2,41
+Authentication                                      ,SEC542,2,48
+EXERCISE: Authentication                            ,SEC542,2,76
+Username Harvesting                                 ,SEC542,2,78
+EXERCISE: Username Harvesting                       ,SEC542,2,88
+Burp Intruder                                       ,SEC542,2,90
+EXERCISE: Fuzzing with Burp Intruder                ,SEC542,2,96
+Session Management                                  ,SEC542,2,98
+EXERCISE: Burp Sequencer                            ,SEC542,2,114
+Authentication and Authorization Bypass             ,SEC542,2,116
+Vulnerable Web Apps: Mutillidae                     ,SEC542,2,125
+EXERCISE: Authentication Bypass                     ,SEC542,2,131
+Summary                                             ,SEC542,2,133
+Appendix: Shellshock                                ,SEC542,2,135
+BONUS EXERCISE: Exploiting Shellshock               ,SEC542,2,145
+Command Injection                                   ,SEC542,3,6
+EXERCISE: Command Injection                         ,SEC542,3,16
+File Inclusion and Directory Traversal              ,SEC542,3,18
+EXERCISE: Local/Remote File Inclusion               ,SEC542,3,24
+Insecure Deserialization                            ,SEC542,3,26
+EXERCISE: Insecure Deserialization                  ,SEC542,3,34
+SQL Injection Primer                                ,SEC542,3,36
+Discovering SQLi                                    ,SEC542,3,54
+Exploiting SQLi                                     ,SEC542,3,76
+EXERCISE: Error-Based SQLi                          ,SEC542,3,98
+SQLi Tools                                          ,SEC542,3,100
+EXERCISE: sqlmap + ZAP                              ,SEC542,3,116
+XXE                                                 ,SEC542,3,118
+EXERCISE: XXE                                       ,SEC542,3,131
+Summary                                             ,SEC542,3,133
+Protecting Cookies                                  ,SEC542,4,6
+Document Object Model (DOM)                         ,SEC542,4,17
+Cross-Site Scripting (XSS) Primer                   ,SEC542,4,27
+Classes of XSS                                      ,SEC542,4,44
+EXERCISE: XSS                                       ,SEC542,4,66
+Discovering XSS                                     ,SEC542,4,68
+XSS Impacts                                         ,SEC542,4,84
+EXERCISE: HTML Injection                            ,SEC542,4,91
+XSS Tools                                           ,SEC542,4,93
+BeEF                                                ,SEC542,4,108
+EXERCISE: BeEF                                      ,SEC542,4,115
+AJAX                                                ,SEC542,4,117
+Data Attacks                                        ,SEC542,4,132
+REST and SOAP                                       ,SEC542,4,138
+EXERCISE: DOM-Based XSS                             ,SEC542,4,146
+Summary                                             ,SEC542,4,148
+Cross-Site Request Forgery                          ,SEC542,5,6
+EXERCISE: CSRF                                      ,SEC542,5,14
+Logic Attacks                                       ,SEC542,5,16
+Python for Web App Pen Testers                      ,SEC542,5,21
+EXERCISE: Python                                    ,SEC542,5,38
+WPScan and ExploitDB                                ,SEC542,5,40
+EXERCISE: WPScan and ExploitDB                      ,SEC542,5,43
+Burp Scanner                                        ,SEC542,5,45
+Metasploit                                          ,SEC542,5,63
+EXERCISE: Metasploit                                ,SEC542,5,78
+EXERCISE: Drupalgeddon2                             ,SEC542,5,80
+When Tools Fail                                     ,SEC542,5,82
+EXERCISE: When Tools Fail                           ,SEC542,5,89
+Business of Penetration Testing: Preparation        ,SEC542,5,91
+Business of Penetration Testing: Post Assessment    ,SEC542,5,105
+Summary                                             ,SEC542,5,116
+BONUSE EXERCISE: Bonus Challenges                   ,SEC542,5,118
+Preview: SEC642 and SEC552                          ,SEC542,5,120
